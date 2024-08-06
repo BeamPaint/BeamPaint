@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script>
+if(typeof beamng !== 'undefined') {
+  String.prototype.replaceAll = function(str1, str2, ignore)
+  {
+      return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+  }
+  function bng_err_log(){
+    var strtmp="";
+    for (var i = 0; i < arguments.length; i++) {
+      if(arguments[i] !== null && arguments[i] !== undefined)
+        strtmp += arguments[i].toString() + " ";
+    }
+    strtmp = strtmp.replaceAll("\'","\\'");
+    beamng.sendEngineLua("log('E','htmlTexture."+document.title+"','"+strtmp+"')")
+  }
+  window.onerror = bng_err_log;
+}
+  </script>
+</head>
+
+<body style="background: rgba(255,255,255,1);overflow: hidden;margin: -5px 2px;">
+
+<canvas id="canvas" width="1024" height="1024" style="position: absolute; top: 0px; left: 0px; z-index: 99;"></canvas>
+
+<script>
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function init() {
+	var c = document.getElementById('canvas');
+    var ctx = c.getContext("2d");
+}
+
+function updateLivery(data) {
+    var c = document.getElementById('canvas');
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    var image = document.createElement("img");
+    image.classList.add("photo");
+    image.onload = drawLivery;
+    image.src = data.src;
+}
+
+function drawLivery() {
+    var c = document.getElementById('canvas');
+    var ctx = c.getContext("2d");
+    ctx.drawImage(this, 0,0, 1024,1024);
+}
+
+</script>
+
+</body>
+
+</html>

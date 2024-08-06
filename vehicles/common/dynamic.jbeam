@@ -1,0 +1,11 @@
+{
+    "global_skin_dynamic": {
+        "information":{
+            "authors":"lucky4luuk",
+            "name":"! BEAMPAINT !",
+            "value":0
+        },
+        "slotType" : "paint_design",
+        "globalSkin" : "dynamic"
+    },
+}

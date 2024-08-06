@@ -1,0 +1,39 @@
+{
+    "pickup.skin.dynamic": {
+  "name": "pickup.skin.dynamic",
+  "mapTo": "pickup.skin.dynamic",
+  "class": "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/common/pickup/pickup_main_ao.data.png",
+      "baseColorMap": "/vehicles/common/pickup/pickup_main_b.color.png",
+      "metallicMap": "/vehicles/common/pickup/pickup_main_m.data.png",
+      "metallicFactor": 1,
+      "normalMap": "vehicles/common/pickup/pickup_n.dds",
+      "roughnessMap": "/vehicles/common/pickup/pickup_main_r.data.png",
+      "useAnisotropic": true
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/common/pickup/pickup_main_ao.data.png",
+      "instanceDiffuse": true,
+      "useAnisotropic": true,
+      "diffuseMapUseUV": 1,
+      "clearCoatFactor": 1,
+      "clearCoatRoughnessFactor": 1,
+      "metallicFactor": 1,
+      "clearCoatMap": "/vehicles/common/pickup/pickup_main_cc.data.png",
+      "normalMap": "/vehicles/common/pickup/pickup_n.dds",
+      "opacityMap": "/vehicles/pickup/pickup_skin_o.data.png",
+      "baseColorMap": "@dynamic_livery",
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "beamng",
+  "materialTag1": "vehicle",
+  "order_simset": 1052095917,
+  "version": 1.5
+},
+}
