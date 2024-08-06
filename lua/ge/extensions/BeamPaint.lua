@@ -1,10 +1,14 @@
 local json = require("json")
 
 local M = {}
+M.dependencies = {"ui_imgui"}
+local im = ui_imgui
+
 M.markedReady = false
 M.alreadySent = {}
 M.incompleteTextureData = {}
 M.texMap = {}
+M.showReloadButton = false
 
 -- TODO: Currently it assumes all packets arrive in order.
 --       This should always be true, but we should probably
@@ -33,13 +37,7 @@ local function BP_markTextureComplete(json_data)
     local tid = data.target_id
     print("Writing data to a file...")
     local out = io.open("vehicles/common/" .. tid .. ".png", "wb")
-    -- out:write(string.char(unpack(M.incompleteTextureData[tid])))
     out:write(M.incompleteTextureData[tid])
-    -- local buf = {}
-    -- for i=1,#M.incompleteTextureData[tid] do
-    --     buf[i] = string.char(M.incompleteTextureData[tid][i])
-    -- end
-    -- out:write(table.concat(buf))
     out:flush()
     out:close()
     print("Written to file!")
@@ -74,7 +72,12 @@ local function setLiveryUsed(objid, vehName)
 end
 
 local function reloadLivery()
-    print("hello from da lua !!!!!!!!!")
+    local veh = be:getPlayerVehicle(0)
+    if veh then
+        local objID = veh:getID()
+        M.alreadySent[objID] = nil
+        veh:queueLuaCommand("extensions.BeamPaint.onExtensionLoaded()")
+    end
 end
 
 local function BP_setPremium(json_data)
@@ -90,9 +93,25 @@ local function init()
     MPVehicleGE.createRole("BP_PREMIUM", "BeamPaint PREMIUM", "BP PREMIUM", 193, 87, 217)
 end
 
+local function onUiChangedState(state)
+    M.showReloadButton = state == "menu.vehicleconfig.parts"
+end
+
+local function onUpdate(dt)
+    if M.showReloadButton then
+        if im.Begin("", im.BoolPtr(true), im.WindowFlags_AlwaysAutoResize + im.WindowFlags_NoDecoration) then
+            if im.Button("Reload Livery") then
+                reloadLivery()
+            end
+        end
+    end
+end
+
 M.onExtensionLoaded = init
 M.onUpdate = onUpdate
 M.setLiveryUsed = setLiveryUsed
 M.reloadLivery = reloadLivery
+M.onUiChangedState = onUiChangedState
+M.onUpdate = onUpdate
 
 return M

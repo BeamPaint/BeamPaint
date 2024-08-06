@@ -1,9 +1,8 @@
 {
-    "pessima.skin.custom": {
-  "name": "pessima.skin.custom",
-  "mapTo": "pessima.skin.custom",
+    "pessima.skin.dynamic": {
+  "name": "pessima.skin.dynamic",
+  "mapTo": "pessima.skin.dynamic",
   "class": "Material",
-  "persistentId": "03b2fe53-b37a-48d7-a572-f212158cd229",
   "Stages": [
     {
       "ambientOcclusionMap": "/vehicles/pessima/pessima_main_ao.data.png",
@@ -20,10 +19,10 @@
       "baseColorMap": "@dynamic_livery",
       "clearCoatFactor": 1,
       "clearCoatMap": "/vehicles/pessima/pessima_main_cc.data.png",
-      "clearCoatRoughnessFactor": 1,
+      "clearCoatRoughnessFactor": 0.07,
       "diffuseMapUseUV": 1,
       "instanceDiffuse": true,
-      "metallicFactor": 1,
+      "metallicFactor": 0,
       "normalMap": "/vehicles/pessima/pessima_n.dds",
       "opacityMap": "/vehicles/pessima/pessima_main_alt_c.data.png",
       "useAnisotropic": true

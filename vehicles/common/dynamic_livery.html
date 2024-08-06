@@ -33,25 +33,27 @@ function getRandomInt(max) {
 }
 
 function init() {
-	var c = document.getElementById('canvas');
-    var ctx = c.getContext("2d");
+	let c = document.getElementById('canvas');
+    let ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
 }
 
 function updateLivery(data) {
-    var c = document.getElementById('canvas');
-    var ctx = c.getContext("2d");
+    let c = document.getElementById('canvas');
+    let ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.width, c.height);
 
-    var image = document.createElement("img");
+    let image = document.createElement("img");
+    image.setAttribute("id", "livery");
     image.classList.add("photo");
     image.onload = drawLivery;
     image.src = data.src;
 }
 
 function drawLivery() {
-    var c = document.getElementById('canvas');
-    var ctx = c.getContext("2d");
-    ctx.drawImage(this, 0,0, 1024,1024);
+    let c = document.getElementById('canvas');
+    let ctx = c.getContext("2d");
+    ctx.drawImage(this, 0,0, c.width,c.height);
 }
 
 </script>
