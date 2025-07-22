@@ -10,4 +10,5 @@ Important info:
 - Discord: [discord.gg/nFMgCn3bDN](https://discord.gg/nFMgCn3bDN)
 - Website: [beampaint.com](https://beampaint.com/)
 - Original authors: [Lucky4Luuk](https://github.com/Lucky4Luuk), [LionKor](https://github.com/LionKor)
+- Git Repository: [github.com/BeamPaint/BeamPaint](https://github.com/BeamPaint/BeamPaint)
 
