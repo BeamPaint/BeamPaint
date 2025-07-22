@@ -1,0 +1,40 @@
+{
+    "nine.skin.dynamic" : {
+  "name" : "nine.skin.dynamic",
+  "mapTo" : "nine.skin.dynamic",
+  "class" : "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/nine/nine_main_ao.data.png",
+      "baseColorMap": "/vehicles/nine/nine_main_b.color.png",
+      "metallicMap": "/vehicles/nine/nine_main_m.data.png",
+      "metallicFactor": 1,
+      "roughnessFactor": 1,
+      "normalMap": "/vehicles/nine/nine_main_nm.normal.png",
+      "roughnessMap": "/vehicles/nine/nine_main_r.data.png",
+      "useAnisotropic": true
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/nine/nine_main_ao.data.png",
+      "useAnisotropic": true,
+      "diffuseMapUseUV": 1,
+      "clearCoatFactor": 1,
+      "clearCoatRoughnessFactor": 0.07,
+      "metallicFactor": 0,
+      "clearCoatMap": "/vehicles/nine/nine_main_cc.data.png",
+      "normalMap": "/vehicles/nine/nine_main_nm.normal.png",
+      "opacityMap": "/vehicles/nine/nine_main_c.data.png",
+      "baseColorMap": "@dynamic_livery"
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "beamng",
+  "materialTag1": "vehicle",
+  "order_simset": 0,
+  "version": 1.5
+},
+}
+
