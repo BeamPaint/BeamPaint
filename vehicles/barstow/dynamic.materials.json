@@ -1,0 +1,43 @@
+{
+    "barstow.skin.dynamic" : {
+  "name" : "barstow.skin.dynamic",
+  "mapTo" : "barstow.skin.dynamic",
+  "class" : "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/barstow/barstow_main_ao.data.png",
+      "baseColorMap": "/vehicles/barstow/barstow_main_b.color.png",
+      "metallicMap": "/vehicles/barstow/barstow_main_m.data.png",
+      "metallicFactor": 1,
+      "roughnessFactor": 1,
+      "normalMap": "vehicles/barstow/barstow_main_n.normal.png",
+      "roughnessMap": "/vehicles/barstow/barstow_main_r.data.png",
+      "useAnisotropic": true
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/barstow/barstow_main_ao.data.png",
+      "useAnisotropic": true,
+      "colorPaletteMapUseUV": 1,
+      "instanceDiffuse": true,
+      "clearCoatFactor": 1,
+      "roughnessFactor": 1,
+      "clearCoatRoughnessFactor": 0.07,
+      "metallicMapUseUV": 1,
+      "metallicFactor": 1,
+      "clearCoatMap": "/vehicles/barstow/barstow_chrome_cc.data.png",
+      "normalMap": "/vehicles/barstow/barstow_main_n.normal.png",
+      "opacityMap": "/vehicles/barstow/barstow_chrome_c.data.png",
+      "diffuseMapUseUV": 1,
+      "baseColorMap": "@dynamic_livery",
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "beamng",
+  "materialTag1": "vehicle",
+  "order_simset": 0,
+  "version": 1.5
+},
+}

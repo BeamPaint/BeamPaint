@@ -1,0 +1,40 @@
+{
+    "hopper.skin.dynamic": {
+  "name": "hopper.skin.dynamic",
+  "mapTo": "hopper.skin.dynamic",
+  "class": "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/hopper/hopper_main_ao.data.png",
+      "baseColorMap": "/vehicles/hopper/hopper_main_b.color.png",
+      "metallicFactor": 1,
+      "metallicMap": "/vehicles/hopper/hopper_main_m.data.png",
+      "normalMap": "vehicles/hopper/hopper_main_n.normal.png",
+      "roughnessFactor": 1,
+      "roughnessMap": "/vehicles/hopper/hopper_main_r.data.png",
+      "useAnisotropic": true
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/hopper/hopper_main_ao.data.png",
+      "clearCoatFactor": 1,
+      "clearCoatMap": "/vehicles/hopper/hopper_main_cc.data.png",
+      "diffuseMapUseUV": 1,
+      "clearCoatFactor": 1,
+      "clearCoatRoughnessFactor": 0.07,
+      "metallicFactor": 0,
+      "baseColorMap": "@dynamic_livery",
+      "normalMap": "vehicles/hopper/hopper_main_n.normal.png",
+      "opacityMap": "/vehicles/hopper/hopper_main_c.data.png",
+      "useAnisotropic": true
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "beamng",
+  "materialTag1": "vehicle",
+  "order_simset": 0,
+  "version": 1.5
+},
+}

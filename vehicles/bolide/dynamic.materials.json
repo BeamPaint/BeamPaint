@@ -15,11 +15,11 @@
     {
       "ambientOcclusionMap": "/vehicles/bolide/bolide_main_ao.data.png",
       "clearCoatFactor": 1,
+      "clearCoatRoughnessFactor": 0.07,
       "baseColorMap": "@dynamic_livery",
       "colorPaletteMapUseUV": 1,
       "diffuseMapUseUV": 1,
-      "instanceDiffuse": true,
-      "metallicFactor": 1,
+      "metallicFactor": 0,
       "normalMap": "/vehicles/bolide/bolide_main_nm.normal.png",
       "opacityMap": "/vehicles/bolide/bolide_main_c.data.png"
     },

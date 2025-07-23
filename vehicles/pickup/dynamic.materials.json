@@ -15,7 +15,6 @@
     },
     {
       "ambientOcclusionMap": "/vehicles/common/pickup/pickup_main_ao.data.png",
-      "instanceDiffuse": true,
       "useAnisotropic": true,
       "diffuseMapUseUV": 1,
       "clearCoatFactor": 1,

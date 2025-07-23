@@ -1,0 +1,39 @@
+{
+    "bluebuck.skin.dynamic" : {
+  "name" : "bluebuck.skin.dynamic",
+  "mapTo" : "bluebuck.skin.dynamic",
+  "class" : "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/bluebuck/bluebuck_main_ao.data.png",
+      "baseColorMap": "/vehicles/bluebuck/bluebuck_main_b.color.png",
+      "metallicFactor": 1,
+      "metallicMap": "/vehicles/bluebuck/bluebuck_main_m.data.png",
+      "normalMap": "vehicles/bluebuck/bluebuck_main_n.normal.png",
+      "roughnessMap": "/vehicles/bluebuck/bluebuck_main_r.data.png",
+      "useAnisotropic": true
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/bluebuck/bluebuck_main_ao.data.png",
+      "clearCoatFactor": 1,
+      "clearCoatMap": "/vehicles/bluebuck/bluebuck_main_cc.data.png",
+      "clearCoatRoughnessFactor": 0.07,
+      "baseColorMap": "@dynamic_livery",
+      "diffuseMapUseUV": 1,
+      "clearCoatFactor": 1,
+      "metallicFactor": 0,
+      "normalMap": "/vehicles/bluebuck/bluebuck_main_n.normal.png",
+      "opacityMap": "/vehicles/bluebuck/bluebuck_main_c.data.png",
+      "useAnisotropic": true
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "beamng",
+  "materialTag1": "vehicle",
+  "order_simset": 0,
+  "version": 1.5
+},
+}

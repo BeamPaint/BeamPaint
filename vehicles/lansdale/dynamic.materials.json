@@ -21,7 +21,6 @@
       "clearCoatMap": "/vehicles/lansdale/lansdale_main_cc.data.png",
       "clearCoatRoughnessFactor": 0.1,
       "diffuseMapUseUV": 1,
-      "instanceDiffuse": true,
       "normalMap": "/vehicles/lansdale/lansdale_main_nm.normal.png",
       "opacityMap": "/vehicles/lansdale/lansdale_main_c.data.png",
       "useAnisotropic": true

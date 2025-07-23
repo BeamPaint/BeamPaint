@@ -21,10 +21,7 @@
       "clearCoatMap": "/vehicles/vivace/vivace_main_cc.data.png",
       "clearCoatRoughnessFactor": 0.1,
       "diffuseMapUseUV": 1,
-      "instanceDiffuse": true,
-      "metallicMap": "vehicles/vivace/vivace_skin_rally_m.data.png",
-      "metallicMapUseUV": 1,
-      "metallicFactor": 1,
+      "metallicFactor": 0,
       "normalMap": "/vehicles/vivace/vivace_main_nm.normal.png",
       "opacityMap": "/vehicles/vivace/vivace_main_c.data.png",
       "useAnisotropic": true

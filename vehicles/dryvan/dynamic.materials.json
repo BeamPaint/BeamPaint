@@ -1,0 +1,74 @@
+{
+    "dryvan.skin.dynamic": {
+      "name": "dryvan.skin.dynamic",
+      "mapTo": "dryvan.skin.dynamic",
+      "class": "Material",
+      "Stages": [
+        {
+          "ambientOcclusionMap": "vehicles/dryvan/dryvan_ao.data.png",
+          "baseColorMap": "vehicles/dryvan/dryvan_b.color.png",
+          "metallicFactor": 1,
+          "metallicMap": "vehicles/dryvan/dryvan_m.data.png",
+          "normalMap": "vehicles/dryvan/dryvan_nm.normal.png",
+          "roughnessFactor": 1,
+          "roughnessMap": "vehicles/dryvan/dryvan_r.data.png",
+          "useAnisotropic": true
+        },
+        {
+          "ambientOcclusionMap": "vehicles/dryvan/dryvan_ao.data.png",
+          "clearCoatFactor": 1,
+          "clearCoatRoughnessFactor": 0.07,
+          "metallicFactor": 1,
+          "normalMap": "vehicles/dryvan/dryvan_nm.normal.png",
+          "roughnessMap": "vehicles/dryvan/dryvan_r.data.png",
+          "useAnisotropic": true,
+          "diffuseMapUseUV": 1,
+          "baseColorMap": "@dynamic_livery"
+        },
+        {},
+        {}
+      ],
+      "activeLayers": 2,
+      "dynamicCubemap": true,
+      "materialTag0": "beamng",
+      "materialTag1": "vehicle",
+      "order_simset": 0,
+      "version": 1.5
+    },
+    "dryvan_ramp.skin.dynamic": {
+      "name": "dryvan_ramp.skin.dynamic",
+      "mapTo": "dryvan_ramp.skin.dynamic",
+      "class": "Material",
+      "Stages": [
+        {
+          "ambientOcclusionMap": "vehicles/dryvan/dryvan_ramp_ao.data.png",
+          "baseColorMap": "vehicles/dryvan/dryvan_ramp_b.color.png",
+          "metallicFactor": 1,
+          "metallicMap": "vehicles/dryvan/dryvan_ramp_m.data.png",
+          "normalMap": "vehicles/dryvan/dryvan_ramp_nm.normal.png",
+          "roughnessFactor": 1,
+          "roughnessMap": "vehicles/dryvan/dryvan_ramp_r.data.png",
+          "useAnisotropic": true
+        },
+        {
+          "ambientOcclusionMap": "/vehicles/dryvan/dryvan_ramp_ao.data.png",
+          "baseColorMap": "@dynamic_livery",
+          "diffuseMapUseUV": 1,
+          "instanceDiffuse": true,
+          "metallicFactor": 1,
+          "normalMap": "vehicles/dryvan/dryvan_ramp_nm.normal.png",
+          "opacityMap": "vehicles/dryvan/dryvan_ramp_c.data.png",
+          "roughnessFactor": 0.6,
+          "useAnisotropic": true
+        },
+        {},
+        {}
+      ],
+      "activeLayers": 2,
+      "dynamicCubemap": true,
+      "materialTag0": "beamng",
+      "materialTag1": "vehicle",
+      "order_simset": 0,
+      "version": 1.5
+    }
+}
