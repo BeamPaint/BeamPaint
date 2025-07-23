@@ -17,10 +17,9 @@
             {
                 "ambientOcclusionMap": "/vehicles/autobello/autobello_main_ao.data.png",
                 "useAnisotropic": true,
-                "colorPaletteMapUseUV": 1,
-                "instanceDiffuse": true,
+                "diffuseMapUseUV": 1,
                 "clearCoatFactor": 1,
-                "clearCoatRoughnessFactor":1,
+                "clearCoatRoughnessFactor":0.07,
                 "metallicFactor": 1,
                 "clearCoatMap": "/vehicles/autobello/autobello_main_cc.data.png",
                 "normalMap": "/vehicles/autobello/autobello_main_nm.normal.png",

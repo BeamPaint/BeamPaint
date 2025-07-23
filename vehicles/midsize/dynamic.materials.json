@@ -19,11 +19,10 @@
       "baseColorMap": "@dynamic_livery",
       "diffuseMapUseUV": 1,
       "metallicFactor": 0,
-      "metallicMap": "/vehicles/midsize/midsize_body_skin_old_m.data.png",
-      "metallicMapUseUV": 1,
       "normalMap": "/vehicles/midsize/midsize_body_nm.normal.png",
-      "roughnessMap": "/vehicles/midsize/midsize_body_skin_old_r.data.png",
-      "roughnessMapUseUV": 1
+      "roughnessMapUseUV": 1,
+      "clearCoatFactor": 1,
+      "clearCoatRoughnessFactor": 0.07,
     },
     {},
     {}

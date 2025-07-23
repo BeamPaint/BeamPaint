@@ -36,4 +36,41 @@
   "order_simset": 0,
   "version": 1.5
 },
+"etkc_extra.skin.dynamic" : {
+    "name" : "etkc_extra.skin.dynamic",
+    "mapTo" : "etkc_extra.skin.dynamic",
+    "class" : "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/etkc/sport_custom/etkc_extra_ao.data.png",
+        "baseColorMap": "/vehicles/etkc/sport_custom/etkc_extra_b.color.png",
+        "metallicMap": "/vehicles/etkc/sport_custom/etkc_extra_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/etkc/sport_custom/etkc_extra_nm.normal.png",
+        "roughnessMap": "/vehicles/etkc/sport_custom/etkc_extra_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/etkc/sport_custom/etkc_extra_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor":0.02,
+        "metallicFactor": 0.6,
+        "clearCoatMap": "/vehicles/etkc/sport_custom/etkc_extra_cc.data.png",
+        "normalMap": "vehicles/etkc/sport_custom/etkc_extra_nm.normal.png",
+        "opacityMap": "/vehicles/etkc/sport_custom/etkc_extra_c.data.png",
+        "baseColorMap": "@dynamic_livery",
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "order_simset": 0,
+    "version": 1.5
+  },
 }

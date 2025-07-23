@@ -1,0 +1,40 @@
+{
+    "etkk.skin_lbe.dynamic_lbe" : {
+  "name" : "etkk.skin_lbe.dynamic_lbe",
+  "mapTo" : "etkk.skin_lbe.dynamic_lbe",
+  "class" : "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/etkk/etkk_main_ao.data.png",
+      "baseColorMap": "/vehicles/etkk/etkk_main_b.color.png",
+      "metallicMap": "/vehicles/etkk/etkk_main_m.data.png",
+      "metallicFactor": 1,
+      "roughnessFactor": 1,
+      "normalMap": "vehicles/etkk/etkk_main_n.normal.png",
+      "roughnessMap": "/vehicles/etkk/etkk_main_r.data.png",
+      "useAnisotropic": true
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/etkk/etkk_main_ao.data.png",
+      "metallicMap": "/vehicles/etkk/etkk_main_m.data.png",
+      "metallicFactor": 1,
+      "useAnisotropic": true,
+      "diffuseMapUseUV": 1,
+      "clearCoatFactor": 1,
+      "clearCoatRoughnessFactor":0.07,
+      "clearCoatMap": "/vehicles/etkk/etkk_main_c.data.png",
+      "normalMap": "/vehicles/etkk/etkk_main_n.normal.png",
+      "opacityMap": "/vehicles/etkk/etkk_main_c.data.png",
+      "baseColorMap": "@dynamic_livery"
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "BeamPaint",
+  "materialTag1": "vehicle",
+  "order_simset": 0,
+  "version": 1.5
+},
+}

@@ -1,0 +1,108 @@
+{
+    "md_series_main.skin.dynamic": {
+      "name": "md_series_main.skin.dynamic",
+      "mapTo": "md_series_main.skin.dynamic",
+      "class": "Material",
+      "Stages": [
+        {
+          "ambientOcclusionMap": "/vehicles/md_series/md_series_main_ao.data.png",
+          "baseColorMap": "/vehicles/md_series/md_series_main_b.color.png",
+          "clearCoatFactor": null,
+          "clearCoatRoughnessFactor": null,
+          "diffuseMapUseUV": null,
+          "metallicFactor": 1,
+          "metallicMap": "/vehicles/md_series/md_series_main_m.data.png",
+          "normalMap": "/vehicles/md_series/md_series_main_nm.normal.png",
+          "roughnessMap": "/vehicles/md_series/md_series_main_r.data.png"
+        },
+        {
+          "ambientOcclusionMap": "/vehicles/md_series/md_series_main_ao.data.png",
+          "baseColorMap": "@dynamic_livery",
+          "clearCoatFactor": 1,
+          "clearCoatMap": "/vehicles/md_series/md_series_main_cc.data.png",
+          "clearCoatRoughnessFactor": 0.07,
+          "diffuseMapUseUV": 1,
+          "metallicFactor": 0.5,
+          "normalMap": "/vehicles/md_series/md_series_main_nm.normal.png",
+          "opacityMap": "/vehicles/md_series/md_series_main_c.data.png"
+        },
+        {},
+        {}
+      ],
+      "activeLayers": 2,
+      "dynamicCubemap": true,
+      "materialTag0": "beamng",
+      "materialTag1": "vehicle",
+      "version": 1.5
+    },
+    "md_series_main_alt.skin.dynamic": {
+      "name": "md_series_main_alt.skin.dynamic",
+      "mapTo": "md_series_main_alt.skin.dynamic",
+      "class": "Material",
+      "Stages": [
+        {
+          "ambientOcclusionMap": "/vehicles/md_series/md_series_main_ao.data.png",
+          "baseColorMap": "/vehicles/md_series/md_series_main_alt_b.color.png",
+          "metallicFactor": 1,
+          "metallicMap": "/vehicles/md_series/md_series_main_alt_m.data.png",
+          "normalMap": "vehicles/md_series/md_series_main_nm.normal.png",
+          "roughnessMap": "/vehicles/md_series/md_series_main_alt_r.data.png",
+          "useAnisotropic": true
+        },
+        {
+          "ambientOcclusionMap": "/vehicles/md_series/md_series_main_ao.data.png",
+          "baseColorMap": "@dynamic_livery",
+          "clearCoatFactor": 1,
+          "clearCoatMap": "/vehicles/md_series/md_series_main_alt_cc.data.png",
+          "clearCoatRoughnessFactor": 0.07,
+          "diffuseMapUseUV": 1,
+          "metallicFactor": 0.5,
+          "normalMap": "/vehicles/md_series/md_series_main_nm.normal.png",
+          "opacityMap": "/vehicles/md_series/md_series_main_alt_c.data.png"
+        },
+        {},
+        {}
+      ],
+      "activeLayers": 2,
+      "dynamicCubemap": true,
+      "materialTag0": "beamng",
+      "materialTag1": "vehicle",
+      "version": 1.5
+    },
+    "pickup.skin.dynamic": {
+    "name": "pickup.skin.dynamic",
+    "mapTo": "pickup.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/common/pickup/pickup_main_ao.data.png",
+        "baseColorMap": "/vehicles/common/pickup/pickup_main_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "/vehicles/common/pickup/pickup_main_m.data.png",
+        "normalMap": "vehicles/common/pickup/pickup_n.dds",
+        "roughnessMap": "/vehicles/common/pickup/pickup_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/common/pickup/pickup_main_ao.data.png",
+        "baseColorMap": "@dynamic_livery",
+        "clearCoatFactor": 1,
+        "clearCoatMap": "/vehicles/common/pickup/pickup_main_cc.data.png",
+        "clearCoatRoughnessFactor": 0.07,
+        "diffuseMapUseUV": 1,
+        "metallicFactor": 0.5,
+        "normalMap": "/vehicles/common/pickup/pickup_n.dds",
+        "opacityMap": "/vehicles/pickup/pickup_skin_o.data.png",
+        "useAnisotropic": true
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "order_simset": 1052095917,
+    "version": 1.5
+  },
+}

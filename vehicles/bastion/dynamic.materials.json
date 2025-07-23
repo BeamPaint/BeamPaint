@@ -21,11 +21,11 @@
         0.999989986,
         1
       ],
+      "diffuseMapUseUV": 1,
       "baseColorMap": "@dynamic_livery",
       "clearCoatFactor": 1,
       "clearCoatMap": "/vehicles/bastion/bastion_main_cc.data.png",
       "clearCoatRoughnessFactor": 0.100000001,
-      "instanceDiffuse": true,
       "metallicFactor": 1,
       "metallicMap": "vehicles/bastion/bastion_main_m.data.png",
       "normalMap": "/vehicles/bastion/bastion_main_nm.normal.png",

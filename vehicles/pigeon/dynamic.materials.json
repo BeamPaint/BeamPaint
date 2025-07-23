@@ -1,0 +1,39 @@
+{
+    "pigeon.skin.dynamic": {
+      "name": "pigeon.skin.dynamic",
+      "mapTo": "pigeon.skin.dynamic",
+      "class": "Material",
+      "Stages": [
+        {
+          "ambientOcclusionMap": "/vehicles/pigeon/pigeon_main_ao.data.png",
+          "baseColorMap": "/vehicles/pigeon/pigeon_main_b.color.png",
+          "metallicFactor": 1,
+          "roughnessFactor": 1,
+          "metallicMap": "/vehicles/pigeon/pigeon_main_m.data.png",
+          "normalMap": "vehicles/pigeon/pigeon_main_nm.normal.png",
+          "roughnessMap": "/vehicles/pigeon/pigeon_main_r.data.png",
+          "useAnisotropic": true
+        },
+        {
+          "ambientOcclusionMap": "/vehicles/pigeon/pigeon_main_ao.data.png",
+          "useAnisotropic": true,
+          "clearCoatFactor": 1,
+          "clearCoatRoughnessFactor":0.06,
+          "clearCoatMap": "/vehicles/pigeon/pigeon_main_cc.data.png",
+          "metallicFactor": 1,
+          "normalMap": "/vehicles/pigeon/pigeon_main_nm.normal.png",
+          "opacityMap": "/vehicles/pigeon/pigeon_main_c.data.png",
+          "diffuseMapUseUV": 1,
+          "baseColorMap": "@dynamic_livery",
+        },
+        {},
+        {}
+      ],
+      "activeLayers": 2,
+      "dynamicCubemap": true,
+      "materialTag0": "beamng",
+      "materialTag1": "vehicle",
+      "order_simset": 0,
+      "version": 1.5
+    },
+}

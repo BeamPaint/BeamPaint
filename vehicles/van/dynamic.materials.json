@@ -1,0 +1,39 @@
+{
+    "van.skin.dynamic": {
+  "name": "van.skin.dynamic",
+  "mapTo": "van.skin.dynamic",
+  "class": "Material",
+  "Stages": [
+    {
+      "ambientOcclusionMap": "/vehicles/van/van_main_ao.data.png",
+      "baseColorMap": "/vehicles/van/van_main_b.color.png",
+      "clearCoatFactor": null,
+      "colorPaletteMapUseUV": null,
+      "diffuseMapUseUV": null,
+      "metallicFactor": 1,
+      "metallicMap": "/vehicles/van/van_main_m.data.png",
+      "normalMap": "/vehicles/van/van_main_nm.normal.png",
+      "roughnessMap": "/vehicles/van/van_main_r.data.png"
+    },
+    {
+      "ambientOcclusionMap": "/vehicles/van/van_main_ao.data.png",
+      "baseColorMap": "@dynamic_livery",
+      "clearCoatFactor": 1,
+      "clearCoatMap": "/vehicles/van/van_main_cc.data.png",
+      "clearCoatRoughnessFactor":0.07,
+      "colorPaletteMapUseUV": 1,
+      "diffuseMapUseUV": 1,
+      "metallicFactor": 1,
+      "normalMap": "/vehicles/van/van_main_nm.normal.png",
+      "opacityMap": "/vehicles/van/van_main_c.data.png"
+    },
+    {},
+    {}
+  ],
+  "activeLayers": 2,
+  "dynamicCubemap": true,
+  "materialTag0": "beamng",
+  "materialTag1": "vehicle",
+  "version": 1.5
+},
+}
