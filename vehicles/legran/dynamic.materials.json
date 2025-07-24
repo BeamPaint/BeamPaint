@@ -1,0 +1,34 @@
+{
+  "legran.skin.dynamic": {
+    "name": "legran.skin.dynamic",
+    "mapTo": "legran.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/legran/legran_main_ao.data.png",
+        "baseColorMap": "/vehicles/legran/legran_main_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "/vehicles/legran/legran_main_m.data.png",
+        "normalMap": "vehicles/legran/legran_n.normal.png",
+        "roughnessMap": "/vehicles/legran/legran_main_r.data.png",
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/legran/legran_main_ao.data.png",
+        "baseColorMap": "@dynamic_livery",
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.07,
+        "metallicFactor": 0,
+        "normalMap": "/vehicles/legran/legran_n.normal.png",
+        "opacityMap": "/vehicles/legran/legran_main_c.data.png"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
+}

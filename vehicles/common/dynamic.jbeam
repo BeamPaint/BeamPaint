@@ -2,10 +2,20 @@
     "global_skin_dynamic": {
         "information":{
             "authors":"lucky4luuk",
-            "name":"! BEAMPAINT !",
-            "value":0
+            "name":"! BEAMPAINT.COM !",
+            "value":10000
         },
         "slotType" : "paint_design",
         "globalSkin" : "dynamic"
+    },
+
+    "global_skin_dynamic_lbe": {
+        "information":{
+            "authors":"lucky4luuk",
+            "name":"! BEAMPAINT.COM !",
+            "value":10000
+        },
+        "slotType" : "skin_lbe",
+        "globalSkin" : "dynamic_lbe"
     },
 }

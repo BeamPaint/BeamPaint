@@ -1,0 +1,37 @@
+{
+  "fr04_main.skin_lbe.dynamic_lbe": {
+    "name": "fr04_main.skin_lbe.dynamic_lbe",
+    "mapTo": "fr04_main.skin_lbe.dynamic_lbe",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/fr04/fr04_main_ao.data.png",
+        "baseColorMap": "/vehicles/fr04/fr04_main_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "/vehicles/fr04/fr04_main_m.data.png",
+        "normalMap": "vehicles/fr04/fr04_main_n.normal.png",
+        "roughnessMap": "/vehicles/fr04/fr04_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/fr04/fr04_main_ao.data.png",
+        "clearCoatFactor": 1,
+        "clearCoatMap": "/vehicles/fr04/fr04_main_c.data.png",
+        "clearCoatRoughnessFactor": 1,
+        "diffuseMapUseUV": 1,
+        "baseColorMap": "@dynamic_livery",
+        "metallicFactor": 1,
+        "normalMap": "/vehicles/fr04/fr04_main_n.normal.png",
+        "opacityMap": "/vehicles/fr04/fr04_main_c.data.png",
+        "useAnisotropic": true
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "BeamPaint",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
+}

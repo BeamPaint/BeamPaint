@@ -1,39 +1,38 @@
 {
-    "wendover.skin.dynamic": {
-  "name": "wendover.skin.dynamic",
-  "mapTo": "wendover.skin.dynamic",
-  "class": "Material",
-  "Stages": [
-    {
-      "ambientOcclusionMap": "/vehicles/wendover/wendover_main_ao.data.png",
-      "baseColorMap": "/vehicles/wendover/wendover_main_b.color.png",
-      "metallicMap": "/vehicles/wendover/wendover_main_m.data.png",
-      "metallicFactor": 1,
-      "roughnessFactor": 1,
-      "normalMap": "vehicles/wendover/wendover_n.normal.png",
-      "roughnessMap": "/vehicles/wendover/wendover_main_r.data.png",
-      "useAnisotropic": true
-    },
-    {
-      "ambientOcclusionMap": "/vehicles/wendover/wendover_main_ao.data.png",
-      "useAnisotropic": true,
-      "diffuseMapUseUV": 1,
-      "clearCoatFactor": 1,
-      "clearCoatRoughnessFactor":0.05,
-      "metallicFactor": 0.6,
-      "clearCoatMap": "/vehicles/wendover/wendover_main_cc.data.png",
-      "normalMap": "/vehicles/wendover/wendover_n.normal.png",
-      "opacityMap": "/vehicles/wendover/wendover_main_c.data.png",
-      "baseColorMap": "@dynamic_livery",
-    },
-    {},
-    {}
-  ],
-  "activeLayers": 2,
-  "dynamicCubemap": true,
-  "materialTag0": "beamng",
-  "materialTag1": "vehicle",
-  "order_simset": 0,
-  "version": 1.5
-},
+  "wendover.skin.dynamic": {
+    "name": "wendover.skin.dynamic",
+    "mapTo": "wendover.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/wendover/wendover_main_ao.data.png",
+        "baseColorMap": "/vehicles/wendover/wendover_main_b.color.png",
+        "metallicMap": "/vehicles/wendover/wendover_main_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/wendover/wendover_n.normal.png",
+        "roughnessMap": "/vehicles/wendover/wendover_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/wendover/wendover_main_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.05,
+        "metallicFactor": 0.6,
+        "clearCoatMap": "/vehicles/wendover/wendover_main_cc.data.png",
+        "normalMap": "/vehicles/wendover/wendover_n.normal.png",
+        "opacityMap": "/vehicles/wendover/wendover_main_c.data.png",
+        "baseColorMap": "@dynamic_livery"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
 }
