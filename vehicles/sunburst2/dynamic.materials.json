@@ -1,40 +1,38 @@
 {
-    "sunburst2.skin.dynamic" : {
-  "name" : "sunburst2.skin.dynamic",
-  "mapTo" : "sunburst2.skin.dynamic",
-  "class" : "Material",
-  "Stages": [
-    {
-      "ambientOcclusionMap": "/vehicles/sunburst2/sunburst2_main_ao.data.png",
-      "baseColorMap": "/vehicles/sunburst2/sunburst2_main_b.color.png",
-      "metallicMap": "/vehicles/sunburst2/sunburst2_main_m.data.png",
-      "metallicFactor": 1,
-      "roughnessFactor": 1,
-      "normalMap": "vehicles/sunburst2/sunburst2_main_nm.normal.png",
-      "roughnessMap": "/vehicles/sunburst2/sunburst2_main_r.data.png",
-      "useAnisotropic": true
-    },
-    {
-      "ambientOcclusionMap": "/vehicles/sunburst2/sunburst2_main_ao.data.png",
-      "useAnisotropic": true,
-      "diffuseMapUseUV": 1,
-      "clearCoatFactor": 1,
-      "clearCoatRoughnessFactor": 0.07,
-      "metallicFactor": 0,
-      "clearCoatMap": "/vehicles/sunburst2/sunburst2_main_cc.data.png",
-      "normalMap": "/vehicles/sunburst2/sunburst2_main_nm.normal.png",
-      "opacityMap": "/vehicles/sunburst2/sunburst2_main_c.data.png",
-      "baseColorMap": "@dynamic_livery"
-    },
-    {},
-    {}
-  ],
-  "activeLayers": 2,
-  "dynamicCubemap": true,
-  "materialTag0": "beamng",
-  "materialTag1": "vehicle",
-  "order_simset": 0,
-  "version": 1.5
-},
+  "sunburst2_main.skin.dynamic": {
+    "name": "sunburst2_main.skin.dynamic",
+    "mapTo": "sunburst2_main.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/sunburst2/sunburst2_main_ao.data.png",
+        "baseColorMap": "/vehicles/sunburst2/sunburst2_main_b.color.png",
+        "metallicMap": "/vehicles/sunburst2/sunburst2_main_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/sunburst2/sunburst2_main_nm.normal.png",
+        "roughnessMap": "/vehicles/sunburst2/sunburst2_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/sunburst2/sunburst2_main_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.07,
+        "metallicFactor": 0,
+        "clearCoatMap": "/vehicles/sunburst2/sunburst2_main_cc.data.png",
+        "normalMap": "/vehicles/sunburst2/sunburst2_main_nm.normal.png",
+        "opacityMap": "/vehicles/sunburst2/sunburst2_main_c.data.png",
+        "baseColorMap": "@dynamic_livery"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
 }
-

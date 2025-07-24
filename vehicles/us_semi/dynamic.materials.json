@@ -1,0 +1,67 @@
+{
+  "cabover_main.skin.dynamic": {
+    "name": "cabover_main.skin.dynamic",
+    "mapTo": "cabover_main.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/us_semi/cabover_main_ao.data.png",
+        "baseColorMap": "/vehicles/us_semi/cabover_main_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "/vehicles/us_semi/cabover_main_m.data.png",
+        "normalMap": "vehicles/us_semi/cabover_main_nm.normal.png",
+        "roughnessMap": "/vehicles/us_semi/cabover_main_r.data.png"
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/us_semi/cabover_main_ao.data.png",
+        "clearCoatFactor": 1,
+        "clearCoatMap": "/vehicles/us_semi/cabover_main_c.data.png",
+        "clearCoatRoughnessFactor": 0.07,
+        "diffuseMapUseUV": 1,
+        "baseColorMap": "@dynamic_livery",
+        "metallicFactor": 0,
+        "normalMap": "/vehicles/us_semi/cabover_main_nm.normal.png",
+        "opacityMap": "/vehicles/us_semi/cabover_main_c.data.png"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  },
+  "longnose_main.skin.dynamic": {
+    "name": "longnose_main.skin.dynamic",
+    "mapTo": "longnose_main.skin.dynamic",
+    "class": "material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/us_semi/longnose_main_ao.data.png",
+        "baseColorMap": "/vehicles/us_semi/longnose_main_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "/vehicles/us_semi/longnose_main_m.data.png",
+        "normalMap": "vehicles/us_semi/longnose_main_nm.normal.png",
+        "roughnessMap": "/vehicles/us_semi/longnose_main_r.data.png"
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/us_semi/longnose_main_ao.data.png",
+        "clearCoatFactor": 1,
+        "clearCoatMap": "/vehicles/us_semi/longnose_main_cc.data.png",
+        "diffuseMapUseUV": 1,
+        "baseColorMap": "@dynamic_livery",
+        "metallicFactor": 1,
+        "normalMap": "/vehicles/us_semi/longnose_main_nm.normal.png",
+        "opacityMap": "/vehicles/us_semi/longnose_main_c.data.png"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
+}

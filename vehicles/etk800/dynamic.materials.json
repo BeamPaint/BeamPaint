@@ -1,40 +1,76 @@
 {
-    "etk800.skin.dynamic" : {
-      "name" : "etk800.skin.dynamic",
-      "mapTo" : "etk800.skin.dynamic",
-      "class" : "Material",
-      "Stages": [
-        {
-          "ambientOcclusionMap": "/vehicles/etk800/etk800_main_ao.data.png",
-          "baseColorMap": "/vehicles/etk800/etk800_main_b.color.png",
-          "metallicMap": "/vehicles/etk800/etk800_main_m.data.png",
-          "metallicFactor": 1,
-          "roughnessFactor": 1,
-          "normalMap": "vehicles/etk800/etk800_n.dds",
-          "roughnessMap": "/vehicles/etk800/etk800_main_r.data.png",
-          "useAnisotropic": true
-        },
-        {
-          "ambientOcclusionMap": "/vehicles/etk800/etk800_main_ao.data.png",
-          "useAnisotropic": true,
-          "diffuseMapUseUV": 1,
-          "clearCoatFactor": 1,
-          "clearCoatRoughnessFactor":0.03,
-          "metallicFactor": 0.5,
-          "roughnessFactor": 0.5,
-          "clearCoatMap": "/vehicles/etk800/etk800_main_cc.data.png",
-          "normalMap": "/vehicles/etk800/etk800_n.dds",
-          "opacityMap": "/vehicles/etk800/etk800_main_c.data.png",
-          "baseColorMap": "@dynamic_livery",
-        },
-        {},
-        {}
-      ],
-      "activeLayers": 2,
-      "dynamicCubemap": true,
-      "materialTag0": "beamng",
-      "materialTag1": "vehicle",
-      "order_simset": 0,
-      "version": 1.5
-    },
+  "etk800.skin.dynamic": {
+    "name": "etk800.skin.dynamic",
+    "mapTo": "etk800.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/etk800/etk800_main_ao.data.png",
+        "baseColorMap": "/vehicles/etk800/etk800_main_b.color.png",
+        "metallicMap": "/vehicles/etk800/etk800_main_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/etk800/etk800_n.dds",
+        "roughnessMap": "/vehicles/etk800/etk800_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/etk800/etk800_main_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.03,
+        "metallicFactor": 0.5,
+        "roughnessFactor": 0.5,
+        "clearCoatMap": "/vehicles/etk800/etk800_main_cc.data.png",
+        "normalMap": "/vehicles/etk800/etk800_n.dds",
+        "opacityMap": "/vehicles/etk800/etk800_main_c.data.png",
+        "baseColorMap": "@dynamic_livery"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  },
+  "etk800_extra.skin.dynamic": {
+    "name": "etk800_extra.skin.dynamic",
+    "mapTo": "etk800_extra.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/etk800/extra/etk800_extra_ao.data.png",
+        "baseColorMap": "/vehicles/etk800/extra/etk800_extra_b.color.png",
+        "metallicMap": "/vehicles/etk800/extra/etk800_extra_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/etk800/extra/etk800_extra_nm.normal.png",
+        "roughnessMap": "/vehicles/etk800/extra/etk800_extra_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/etk800/extra/etk800_extra_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.03,
+        "metallicFactor": 0.5,
+        "roughnessFactor": 0.5,
+        "clearCoatMap": "/vehicles/etk800/extra/etk800_extra_cc.data.png",
+        "normalMap": "vehicles/etk800/extra/etk800_extra_nm.normal.png",
+        "opacityMap": "/vehicles/etk800/extra/etk800_extra_c.data.png",
+        "baseColorMap": "@dynamic_livery"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
 }
