@@ -10,7 +10,7 @@
         "metallicFactor": 1,
         "metallicMap": "/vehicles/legran/legran_main_m.data.png",
         "normalMap": "vehicles/legran/legran_n.normal.png",
-        "roughnessMap": "/vehicles/legran/legran_main_r.data.png",
+        "roughnessMap": "/vehicles/legran/legran_main_r.data.png"
       },
       {
         "ambientOcclusionMap": "/vehicles/legran/legran_main_ao.data.png",
