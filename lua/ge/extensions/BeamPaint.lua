@@ -31,11 +31,12 @@ end
 local function applyLiveryAttempt()
     local tid = table.remove(M.waitingForLivery, 1)
     local objid = MPVehicleGE.getGameVehicleID(tid)
-    if objid then
+    if not objid or objid == -1 then
+        print("BeamMP is unable to get game vehcile id")
+        table.insert(M.waitingForLivery, tid)
+    else
         M.texMap[objid] = tid
         be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tid .. ".png\")")
-    else
-        table.insert(M.waitingForLivery, tid)
     end
 end
 
