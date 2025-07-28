@@ -1,0 +1,38 @@
+{
+  "moonhawk.skin.dynamic": {
+    "name": "moonhawk.skin.dynamic",
+    "mapTo": "moonhawk.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/moonhawk/moonhawk_main_ao.data.png",
+        "baseColorMap": "/vehicles/moonhawk/moonhawk_main_b.color.png",
+        "metallicMap": "/vehicles/moonhawk/moonhawk_main_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/moonhawk/moonhawk_n.dds",
+        "roughnessMap": "/vehicles/moonhawk/moonhawk_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/moonhawk/moonhawk_main_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.07,
+        "metallicFactor": 0,
+        "clearCoatMap": "/vehicles/moonhawk/moonhawk_main_cc.data.png",
+        "normalMap": "/vehicles/moonhawk/moonhawk_n.dds",
+        "opacityMap": "/vehicles/moonhawk/moonhawk_main_c.data.png",
+        "baseColorMap": "@dynamic_livery"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
+}

@@ -1,63 +1,168 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <script>
-if(typeof beamng !== 'undefined') {
-  String.prototype.replaceAll = function(str1, str2, ignore)
-  {
-      return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-  }
-  function bng_err_log(){
-    var strtmp="";
-    for (var i = 0; i < arguments.length; i++) {
-      if(arguments[i] !== null && arguments[i] !== undefined)
-        strtmp += arguments[i].toString() + " ";
-    }
-    strtmp = strtmp.replaceAll("\'","\\'");
-    beamng.sendEngineLua("log('E','htmlTexture."+document.title+"','"+strtmp+"')")
-  }
-  window.onerror = bng_err_log;
-}
-  </script>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            if (typeof beamng !== "undefined") {
+                String.prototype.replaceAll = function (str1, str2, ignore) {
+                    return this.replace(
+                        new RegExp(
+                            str1.replace(
+                                /([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,
+                                "\\$&",
+                            ),
+                            ignore ? "gi" : "g",
+                        ),
+                        typeof str2 == "string"
+                            ? str2.replace(/\$/g, "$$$$")
+                            : str2,
+                    );
+                };
+                function bng_err_log() {
+                    var strtmp = "";
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] !== null && arguments[i] !== undefined)
+                            strtmp += arguments[i].toString() + " ";
+                    }
+                    strtmp = strtmp.replaceAll("\'", "\\'");
+                    beamng.sendEngineLua(
+                        "log('E','htmlTexture." +
+                            document.title +
+                            "','" +
+                            strtmp +
+                            "')",
+                    );
+                }
+                window.onerror = bng_err_log;
+            }
+        </script>
+    </head>
 
-<body style="background: rgba(255,255,255,1);overflow: hidden;margin: -5px 2px;">
+    <body
+        style="background: rgba(0, 0, 0, 0); overflow: hidden; margin: -5px 2px"
+    >
+        <canvas
+            id="paintcolor"
+            width="1"
+            height="1"
+            style="
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: 50;
+                width: 2048px;
+                height: 2048px;
+            "
+        ></canvas>
+        <canvas
+            id="canvas"
+            width="2048"
+            height="2048"
+            style="position: absolute; top: 0px; left: 0px; z-index: 99"
+        ></canvas>
 
-<canvas id="canvas" width="1024" height="1024" style="position: absolute; top: 0px; left: 0px; z-index: 99;"></canvas>
+        <script>
+            var needsGammaCorrection = false;
 
-<script>
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-}
+            function initCanvas() {
+                let c = document.getElementById("canvas");
+                let ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, c.width, c.height);
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, c.width, c.height);
+            }
 
-function init() {
-	let c = document.getElementById('canvas');
-    let ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
-}
+            function initPaintCanvas() {
+                let c = document.getElementById("paintcolor");
+                let ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, c.width, c.height);
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, c.width, c.height);
+            }
 
-function updateLivery(data) {
-    let c = document.getElementById('canvas');
-    let ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
+            function init() {
+                initCanvas();
+                initPaintCanvas();
+            }
 
-    let image = document.createElement("img");
-    image.setAttribute("id", "livery");
-    image.classList.add("photo");
-    image.onload = drawLivery;
-    image.src = data.src;
-}
+            function updateLivery(data) {
+                let c = document.getElementById("canvas");
+                let ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, c.width, c.height);
 
-function drawLivery() {
-    let c = document.getElementById('canvas');
-    let ctx = c.getContext("2d");
-    ctx.drawImage(this, 0,0, c.width,c.height);
-}
+                let image = document.createElement("img");
+                image.setAttribute("id", "livery");
+                image.classList.add("photo");
+                image.onload = drawLivery;
+                image.src = data.src;
 
-</script>
+                needsGammaCorrection = data.needsGammaCorrection;
+            }
 
-</body>
+            function updatePaint(data) {
+                let rgba = data.baseColor;
+                let rC = Math.pow(rgba[0], 2.2) * 255;
+                let gC = Math.pow(rgba[1], 2.2) * 255;
+                let bC = Math.pow(rgba[2], 2.2) * 255;
 
+                let c = document.getElementById("paintcolor");
+                let ctx = c.getContext("2d");
+                ctx.fillStyle = `rgba(${rC}, ${gC}, ${bC}, 1)`;
+                ctx.fillRect(0, 0, c.width, c.height);
+            }
+
+            function drawLivery() {
+                let c = document.getElementById("canvas");
+                let ctx = c.getContext("2d");
+                ctx.drawImage(this, 0, 0, c.width, c.height);
+
+                if (needsGammaCorrection) {
+                    pixelEffect(ctx, filterGammaCorrect, 2.2);
+                }
+            }
+
+            // Sorry, this is only used for singleplayer gamma correction lol
+            function filterGammaCorrect(rgb, gamma) {
+                return [
+                    Math.pow(rgb[0] / 255, gamma) * 255,
+                    Math.pow(rgb[1] / 255, gamma) * 255,
+                    Math.pow(rgb[2] / 255, gamma) * 255,
+                    rgb[3],
+                ];
+            }
+            function pixelEffect(ctx, filter, data) {
+                return putPixels(
+                    ctx,
+                    processPixels(
+                        ctx.getImageData(0, 0, 2048, 2048),
+                        filter,
+                        data,
+                    ),
+                );
+            }
+            function processPixels(pixelData, filter, data) {
+                let i = 0;
+                let pdat = pixelData.data;
+                while (i < pdat.length) {
+                    let rt = filter(
+                        [pdat[i], pdat[i + 1], pdat[i + 2], pdat[i + 3]],
+                        data,
+                    );
+                    pdat[i] = rt[0];
+                    pdat[i + 1] = rt[1];
+                    pdat[i + 2] = rt[2];
+                    pdat[i + 3] = rt[3];
+                    i += 4;
+                }
+                return pixelData;
+            }
+            function putPixels(ctx, pixelData) {
+                ctx.putImageData(pixelData, 0, 0);
+            }
+        </script>
+    </body>
 </html>

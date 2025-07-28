@@ -1,0 +1,38 @@
+{
+  "burnside.skin.dynamic": {
+    "name": "burnside.skin.dynamic",
+    "mapTo": "burnside.skin.dynamic",
+    "class": "Material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "/vehicles/burnside/burnside_main_ao.data.png",
+        "baseColorMap": "/vehicles/burnside/burnside_main_b.color.png",
+        "metallicMap": "/vehicles/burnside/burnside_main_m.data.png",
+        "metallicFactor": 1,
+        "roughnessFactor": 1,
+        "normalMap": "vehicles/burnside/burnside_n.dds",
+        "roughnessMap": "/vehicles/burnside/burnside_main_r.data.png",
+        "useAnisotropic": true
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/burnside/burnside_main_ao.data.png",
+        "useAnisotropic": true,
+        "diffuseMapUseUV": 1,
+        "clearCoatFactor": 1,
+        "clearCoatRoughnessFactor": 0.07,
+        "metallicFactor": 0,
+        "baseColorMap": "@dynamic_livery",
+        "clearCoatMap": "/vehicles/burnside/burnside_main_cc.data.png",
+        "normalMap": "/vehicles/burnside/burnside_n.dds",
+        "opacityMap": "/vehicles/burnside/burnside_main_c.data.png"
+      },
+      {},
+      {}
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "cargotrailer.skin.dynamic": {
+    "name": "cargotrailer.skin.dynamic",
+    "mapTo": "cargotrailer.skin.dynamic",
+    "class": "material",
+    "Stages": [
+      {
+        "ambientOcclusionMap": "vehicles/cargotrailer/cargotrailer_ao.data.png",
+        "baseColorMap": "vehicles/cargotrailer/cargotrailer_b.color.png",
+        "metallicFactor": 1,
+        "metallicMap": "vehicles/cargotrailer/cargotrailer_m.data.png",
+        "normalMap": "vehicles/cargotrailer/cargotrailer_nm.normal.png",
+        "roughnessMap": "vehicles/cargotrailer/cargotrailer_r.data.png"
+      },
+      {
+        "ambientOcclusionMap": "/vehicles/cargotrailer/cargotrailer_ao.data.png",
+        "baseColorMap": "@dynamic_livery",
+        "diffuseMapUseUV": 1,
+        "metallicFactor": 0.800000012,
+        "metallicMap": "vehicles/cargotrailer/cargotrailer_m.data.png",
+        "normalMap": "vehicles/cargotrailer/cargotrailer_nm.normal.png",
+        "opacityMap": "vehicles/cargotrailer/cargotrailer_o.data.png",
+        "roughnessFactor": 0.600000024,
+        "roughnessMap": "vehicles/cargotrailer/cargotrailer_r.data.png"
+      },
+      {
+      },
+      {
+      }
+    ],
+    "activeLayers": 2,
+    "dynamicCubemap": true,
+    "materialTag0": "beamng",
+    "materialTag1": "vehicle",
+    "version": 1.5
+  }
+}
