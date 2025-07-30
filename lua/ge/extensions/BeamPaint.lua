@@ -31,12 +31,16 @@ end
 local function applyLiveryAttempt()
     local tid = table.remove(M.waitingForLivery, 1)
     local objid = MPVehicleGE.getGameVehicleID(tid)
-    if not objid or objid == -1 then
-        print("BeamMP is unable to get game vehcile id")
-        table.insert(M.waitingForLivery, tid)
+    if objid and objid ~= -1 then
+        local vehicle = MPVehicleGE.getVehicleByGameID(objid)
+        if vehicle.isSpawned then
+            M.texMap[objid] = tid
+            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tid .. ".png\")")
+        else
+            table.insert(M.waitingForLivery, tid)
+        end
     else
-        M.texMap[objid] = tid
-        be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tid .. ".png\")")
+        table.insert(M.waitingForLivery, tid)
     end
 end
 
@@ -211,10 +215,10 @@ local function onUpdate(dt)
             end
             if M.singlePlayer then
                 im.Separator()
-                im.Text("Liveries are loaded from /vehicle/common/<vehName>.png!")
+                im.Text("Liveries are loaded from /vehicles/common/<vehName>.png!")
                 im.Text("If you want to preview a livery, simply put it in there with the right name and hit \"Reload Livery\".")
                 local vehName = be:getPlayerVehicle(0):getField("JBeam", 0)
-                im.Text("For the current vehicle: \"/vehicle/common/" .. vehName .. ".png\"")
+                im.Text("For the current vehicle: \"/vehicles/common/" .. vehName .. ".png\"")
                 if im.Button("Open folder...") then
                     Engine.Platform.exploreFolder("/vehicles/common/")
                 end
