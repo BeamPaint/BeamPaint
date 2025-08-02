@@ -15,18 +15,20 @@ local function initLivery()
 end
 
 local function isRightSkin(partsTree)
-    for key, part in pairs(partsTree) do
-        if key == "paint_design" or key == "skin_lbe" then
-            print(part.chosenPartName)
-            if part.chosenPartName == "global_skin_dynamic" or part.chosenPartName == "global_skin_dynamic_lbe" then
-                return true
+    if partsTree then
+        for key, part in pairs(partsTree) do
+            if key == "paint_design" or key == "skin_lbe" then
+                print(part.chosenPartName)
+                if part.chosenPartName == "global_skin_dynamic" or part.chosenPartName == "global_skin_dynamic_lbe" then
+                    return true
+                end
+            end
+            if part.children then
+                if isRightSkin(part.children) then return true end
             end
         end
-        if part.children then
-            if isRightSkin(part.children) then return true end
-        end
+        return false
     end
-    return false
 end
 
 local function onExtensionLoaded()
