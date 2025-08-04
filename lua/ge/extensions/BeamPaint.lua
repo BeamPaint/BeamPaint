@@ -31,12 +31,13 @@ end
 local function applyLiveryAttempt()
     local tidHash = table.remove(M.waitingForLivery, 1)
     local tid = string.sub(tidHash, 1, 3)
+    local hash = string.sub(tidHash, 4)
     local objid = MPVehicleGE.getGameVehicleID(tid)
     if objid and objid ~= -1 then
         local vehicle = MPVehicleGE.getVehicleByGameID(objid)
         if vehicle.isSpawned then
             M.texMap[objid] = tidHash
-            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tidHash .. ".png\")")
+            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
         else
             table.insert(M.waitingForLivery, tidHash)
         end
@@ -47,10 +48,10 @@ local function BP_markTextureComplete(json_data)
     print("Received texture complete status from server...")
     local data = jsonDecode(json_data)
     local tid = data.target_id
-    local shortHash = string.sub(data.livery_id, 1, 4)
+    local hash = data.livery_id
+    local tidHash = tid .. hash
     print("Writing data to a file...")
-    local tidHash = tid .. "-" .. shortHash
-    local out = io.open("vehicles/common/" .. tidHash .. ".png", "wb")
+    local out = io.open("vehicles/common/" .. hash .. ".png", "wb")
     if out then
         out:write(M.incompleteTextureData[tid])
         out:flush()
@@ -68,8 +69,9 @@ local function setLiveryUsedAttempt(objid, vehName)
         if M.alreadySent[objid] ~= nil and M.alreadySent[objid].prevVehName == vehName then
             local tidHash = M.texMap[objid]
             local tid = string.sub(tidHash, 1, 3)
+            local hash = string.sub(tidHash, 4)
             if tid then
-                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tidHash .. ".png\")")
+                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
                 return false
             end
         else
@@ -88,8 +90,9 @@ local function setLiveryUsedAttempt(objid, vehName)
         local tidHash = M.texMap[objid]
         if tidHash then
             local tid = string.sub(tidHash, 1, 3)
+            local hash = string.sub(tidHash, 4)
             if tid then
-                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tidHash .. ".png\")")
+                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
                 return false
             end
         end
