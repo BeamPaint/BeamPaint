@@ -86,6 +86,7 @@ local function BP_markTextureComplete(json_data)
     end
     M.incompleteTextureData[tid] = ""
     table.insert(M.waitingForLivery, tidHash)
+    BP_updatePlayerCache(hash)
 end
 
 local function BP_textureSkip(json_data)
@@ -97,7 +98,6 @@ local function BP_textureSkip(json_data)
     print("Livery cached, applying now...")
     M.incompleteTextureData[tid] = ""
     table.insert(M.waitingForLivery, tidHash)
-    BP_updatePlayerCache(hash)
 end
 
 local function setLiveryUsedAttempt(objid, vehName)
