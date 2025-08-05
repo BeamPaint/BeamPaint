@@ -33,7 +33,7 @@ local function BP_reportPlayerCache()
     local pngs = FS:findFiles("vehicles/common/", '*.png', 0, false, false)
     for index, path in pairs(pngs) do
         if string.match(path, "(%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)") then --look at my regex, dawg, I'm going to jail
-            local hash = string.sub(v, 18)
+            local hash = string.sub(path, 18)
             hash = string.sub(hash, 1, 36)
             liveryCache[index] = hash
         end
