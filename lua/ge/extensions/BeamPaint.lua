@@ -32,9 +32,8 @@ local function BP_reportPlayerCache()
     local liveryCache = {}
     local pngs = FS:findFiles("vehicles/common/", '*.png', 0, false, false)
     for index, path in pairs(pngs) do
-        if string.match(path, "(%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)") then --look at my regex, dawg, I'm going to jail
-            local hash = string.sub(path, 18)
-            hash = string.sub(hash, 1, 36)
+        local hash = string.match(path, "(%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)") --look at my regex, dawg, I'm going to jail
+        if hash then
             liveryCache[index] = hash
         end
     end
@@ -47,9 +46,7 @@ end
 
 local function BP_cacheUpdateComplete(type)
     if type == "report" then
-        TriggerServerEvent("BP_clientReady", "")
-    elseif type == "update" then
-        
+        TriggerServerEvent("BP_clientReady", "") 
     end
 end
 
