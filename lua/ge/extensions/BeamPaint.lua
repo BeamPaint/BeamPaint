@@ -28,6 +28,27 @@ local function BP_receiveTextureData(json_data)
     TriggerServerEvent("BP_textureDataReceived", "" .. tid)
 end
 
+local function BP_reportPlayerCache()
+    local liveryCache = {}
+    local pngs = FS:findFiles("vehicles/common/", '*.png', 0, false, false)
+    for index, path in pairs(pngs) do
+        if string.match(path, "(%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)") then --look at my regex, dawg, I'm going to jail
+            local hash = string.sub(v, 18)
+            hash = string.sub(hash, 1, 36)
+            liveryCache[index] = hash
+        end
+    end
+    TriggerServerEvent("BP_cachedLiveryReport", jsonEncode(liveryCache))
+end
+
+local function BP_updatePlayerCache(hash)
+    TriggerServerEvent("BP_cachedLiveryUpdate", hash)
+end
+
+local function BP_cacheUpdateComplete()
+    TriggerServerEvent("BP_clientReady", "")
+end
+
 local function applyLiveryAttempt()
     local tidHash = table.remove(M.waitingForLivery, 1)
     local tid = string.sub(tidHash, 1, 3)
@@ -41,6 +62,8 @@ local function applyLiveryAttempt()
         else
             table.insert(M.waitingForLivery, tidHash)
         end
+    else
+        table.insert(M.waitingForLivery, tidHash)
     end
 end
 
@@ -62,6 +85,18 @@ local function BP_markTextureComplete(json_data)
     end
     M.incompleteTextureData[tid] = ""
     table.insert(M.waitingForLivery, tidHash)
+end
+
+local function BP_textureSkip(json_data)
+    print("Received texture skip status from server...")
+    local data = jsonDecode(json_data)
+    local tid = data.target_id
+    local hash = data.livery_id
+    local tidHash = tid .. hash
+    print("Livery cached, applying now...")
+    M.incompleteTextureData[tid] = ""
+    table.insert(M.waitingForLivery, tidHash)
+    BP_updatePlayerCache(hash)
 end
 
 local function setLiveryUsedAttempt(objid, vehName)
@@ -172,8 +207,10 @@ local function init()
     if MPCoreNetwork then
         if MPCoreNetwork.isMPSession() == true then
             M.singlePlayer = false
+            AddEventHandler("BP_cacheUpdateComplete", BP_cacheUpdateComplete)
             AddEventHandler("BP_receiveTextureData", BP_receiveTextureData)
             AddEventHandler("BP_markTextureComplete", BP_markTextureComplete)
+            AddEventHandler("BP_textureSkip", BP_textureSkip)
             AddEventHandler("BP_setPremium", BP_setPremium)
             AddEventHandler("BP_informSignup", BP_informSignup)
             if not MPVehicleGE.setPlayerRole then
@@ -193,7 +230,7 @@ local function onUpdate(dt)
     if M.markedReady == false and worldReadyState >= 2 then
         M.markedReady = true
         if not M.singlePlayer then
-            TriggerServerEvent("BP_clientReady", "")
+            BP_reportPlayerCache()
         end
     end
     if #M.waitingForRole > 0 then
