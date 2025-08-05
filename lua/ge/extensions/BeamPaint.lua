@@ -45,8 +45,12 @@ local function BP_updatePlayerCache(hash)
     TriggerServerEvent("BP_cachedLiveryUpdate", hash)
 end
 
-local function BP_cacheUpdateComplete()
-    TriggerServerEvent("BP_clientReady", "")
+local function BP_cacheUpdateComplete(type)
+    if type == "report" then
+        TriggerServerEvent("BP_clientReady", "")
+    elseif type == "update" then
+        
+    end
 end
 
 local function applyLiveryAttempt()
