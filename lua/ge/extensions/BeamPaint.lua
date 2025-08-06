@@ -57,17 +57,26 @@ local function applyLiveryAttempt()
     local tidHash = table.remove(M.waitingForLivery, 1)
     local tid = string.sub(tidHash, 1, 3)
     local hash = string.sub(tidHash, 4)
-    local objid = MPVehicleGE.getGameVehicleID(tid)
-    if objid and objid ~= -1 then
-        local vehicle = MPVehicleGE.getVehicleByGameID(objid)
-        if vehicle.isSpawned then
-            M.texMap[objid] = tidHash
-            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
-        else
+    local vehicles = MPVehicleGE.getVehicles()
+    if vehicles[tid] then
+        local objid = MPVehicleGE.getGameVehicleID(tid)
+        if objid ~= -1 then
+            local vehicle = MPVehicleGE.getVehicleByGameID(objid)
+            if vehicle.isLocal then
+                M.texMap[objid] = tidHash
+                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
+            elseif not vehicle.isLocal then
+                if not vehicle.editQueue then
+                    M.texMap[objid] = tidHash
+                    be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
+                else
+                    M.texMap[objid] = nil
+                    table.insert(M.waitingForLivery, tidHash)
+                end
+            end
+        elseif objid == -1 then
             table.insert(M.waitingForLivery, tidHash)
         end
-    else
-        table.insert(M.waitingForLivery, tidHash)
     end
 end
 
