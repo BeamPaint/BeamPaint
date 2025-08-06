@@ -5,6 +5,9 @@ M.dependencies = {"ui_imgui"}
 
 local im = ui_imgui
 
+local gui_module = require("ge/extensions/editor/api/gui")
+local gui = {setupEditorGuiTheme = nop}
+
 M.markedReady = false
 M.alreadySent = {}
 M.incompleteTextureData = {}
@@ -220,11 +223,39 @@ local function init()
             end
         end
     end
+	gui_module.initialize(gui)
+	gui.registerWindow("BeamPaint", im.ImVec2(512, 256))
+	gui.showWindow("BeamPaint")
 end
 
 local function onUiChangedState(state)
     M.inVehicleConfigMenu = state == "menu.vehicleconfig.parts"
     M.inVehiclePaintMenu = state == "menu.vehicleconfig.color"
+end
+
+local function drawBP()
+    gui.setupWindow("BeamPaint")
+	im.PushStyleColor2(im.Col_Button, im.ImVec4(0.85, 0.15, 0.75, 0.333))
+	im.PushStyleColor2(im.Col_ButtonHovered, im.ImVec4(0.8, 0.1, 0.69, 0.5))
+	im.PushStyleColor2(im.Col_ButtonActive, im.ImVec4(0.75, 0.05, 0.55, 0.999))
+    im.Begin("BeamPaint", im.BoolPtr(true), im.WindowFlags_AlwaysAutoResize)
+        if im.Button("Reload Livery") then
+            reloadLivery()
+        end
+        if M.singlePlayer then
+            im.Separator()
+            im.Text("Liveries are loaded from <userfolder>/vehicles/common/<vehName>.png!")
+            im.Text("To preview a livery, place it there with the following name and hit \"Reload Livery\".")
+            local vehName = be:getPlayerVehicle(0):getField("JBeam", 0)
+            im.Text("For the current vehicle: \"/vehicles/common/" .. vehName .. ".png\"")
+            if im.Button("Open folder...") then
+                Engine.Platform.exploreFolder("/vehicles/common/")
+            end
+        else
+            -- TODO: Show current livery?
+        end
+        im.PopStyleColor(3)
+    im.End()
 end
 
 local function onUpdate(dt)
@@ -255,23 +286,7 @@ local function onUpdate(dt)
     end
     if M.inVehicleConfigMenu then
         -- Show the "Reload livery" UI
-        if im.Begin("BeamPaint", im.BoolPtr(true), im.WindowFlags_AlwaysAutoResize) then
-            if im.Button("Reload Livery") then
-                reloadLivery()
-            end
-            if M.singlePlayer then
-                im.Separator()
-                im.Text("Liveries are loaded from /vehicles/common/<vehName>.png!")
-                im.Text("If you want to preview a livery, simply put it in there with the right name and hit \"Reload Livery\".")
-                local vehName = be:getPlayerVehicle(0):getField("JBeam", 0)
-                im.Text("For the current vehicle: \"/vehicles/common/" .. vehName .. ".png\"")
-                if im.Button("Open folder...") then
-                    Engine.Platform.exploreFolder("/vehicles/common/")
-                end
-            else
-                -- TODO: Show current livery?
-            end
-        end
+        drawBP()
     end
 end
 
