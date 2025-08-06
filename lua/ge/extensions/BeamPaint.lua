@@ -5,6 +5,9 @@ M.dependencies = {"ui_imgui"}
 
 local im = ui_imgui
 
+local gui_module = require("ge/extensions/editor/api/gui")
+local gui = {setupEditorGuiTheme = nop}
+
 M.markedReady = false
 M.alreadySent = {}
 M.incompleteTextureData = {}
@@ -28,19 +31,43 @@ local function BP_receiveTextureData(json_data)
     TriggerServerEvent("BP_textureDataReceived", "" .. tid)
 end
 
+local function BP_reportPlayerCache()
+    local liveryCache = {}
+    local pngs = FS:findFiles("vehicles/common/", '*.png', 0, false, false)
+    for index, path in pairs(pngs) do
+        local hash = string.match(path, "(%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)") --look at my regex, dawg, I'm going to jail
+        if hash then
+            liveryCache[index] = hash
+        end
+    end
+    TriggerServerEvent("BP_cachedLiveryReport", jsonEncode(liveryCache))
+end
+
+local function BP_updatePlayerCache(hash)
+    TriggerServerEvent("BP_cachedLiveryUpdate", hash)
+end
+
+local function BP_cacheUpdateComplete(type)
+    if type == "report" then
+        TriggerServerEvent("BP_clientReady", "") 
+    end
+end
+
 local function applyLiveryAttempt()
-    local tid = table.remove(M.waitingForLivery, 1)
+    local tidHash = table.remove(M.waitingForLivery, 1)
+    local tid = string.sub(tidHash, 1, 3)
+    local hash = string.sub(tidHash, 4)
     local objid = MPVehicleGE.getGameVehicleID(tid)
     if objid and objid ~= -1 then
         local vehicle = MPVehicleGE.getVehicleByGameID(objid)
         if vehicle.isSpawned then
-            M.texMap[objid] = tid
-            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tid .. ".png\")")
+            M.texMap[objid] = tidHash
+            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
         else
-            table.insert(M.waitingForLivery, tid)
+            table.insert(M.waitingForLivery, tidHash)
         end
     else
-        table.insert(M.waitingForLivery, tid)
+        table.insert(M.waitingForLivery, tidHash)
     end
 end
 
@@ -48,8 +75,10 @@ local function BP_markTextureComplete(json_data)
     print("Received texture complete status from server...")
     local data = jsonDecode(json_data)
     local tid = data.target_id
+    local hash = data.livery_id
+    local tidHash = tid .. hash
     print("Writing data to a file...")
-    local out = io.open("vehicles/common/" .. tid .. ".png", "wb")
+    local out = io.open("vehicles/common/" .. hash .. ".png", "wb")
     if out then
         out:write(M.incompleteTextureData[tid])
         out:flush()
@@ -59,15 +88,29 @@ local function BP_markTextureComplete(json_data)
         print("Could not write to file!")
     end
     M.incompleteTextureData[tid] = ""
-    table.insert(M.waitingForLivery, tid)
+    table.insert(M.waitingForLivery, tidHash)
+    BP_updatePlayerCache(hash)
+end
+
+local function BP_textureSkip(json_data)
+    print("Received texture skip status from server...")
+    local data = jsonDecode(json_data)
+    local tid = data.target_id
+    local hash = data.livery_id
+    local tidHash = tid .. hash
+    print("Livery cached, applying now...")
+    M.incompleteTextureData[tid] = ""
+    table.insert(M.waitingForLivery, tidHash)
 end
 
 local function setLiveryUsedAttempt(objid, vehName)
     if MPVehicleGE.isOwn(objid) then
         if M.alreadySent[objid] ~= nil and M.alreadySent[objid].prevVehName == vehName then
-            local tid = M.texMap[objid]
+            local tidHash = M.texMap[objid]
+            local tid = string.sub(tidHash, 1, 3)
+            local hash = string.sub(tidHash, 4)
             if tid then
-                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tid .. ".png\")")
+                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
                 return false
             end
         else
@@ -83,10 +126,14 @@ local function setLiveryUsedAttempt(objid, vehName)
             end
         end
     else
-        local tid = M.texMap[objid]
-        if tid then
-            be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. tid .. ".png\")")
-            return false
+        local tidHash = M.texMap[objid]
+        if tidHash then
+            local tid = string.sub(tidHash, 1, 3)
+            local hash = string.sub(tidHash, 4)
+            if tid then
+                be:getObjectByID(objid):queueLuaCommand("extensions.BeamPaint.updateLivery(\"" .. hash .. ".png\")")
+                return false
+            end
         end
     end
     return true
@@ -164,8 +211,10 @@ local function init()
     if MPCoreNetwork then
         if MPCoreNetwork.isMPSession() == true then
             M.singlePlayer = false
+            AddEventHandler("BP_cacheUpdateComplete", BP_cacheUpdateComplete)
             AddEventHandler("BP_receiveTextureData", BP_receiveTextureData)
             AddEventHandler("BP_markTextureComplete", BP_markTextureComplete)
+            AddEventHandler("BP_textureSkip", BP_textureSkip)
             AddEventHandler("BP_setPremium", BP_setPremium)
             AddEventHandler("BP_informSignup", BP_informSignup)
             if not MPVehicleGE.setPlayerRole then
@@ -174,6 +223,9 @@ local function init()
             end
         end
     end
+	gui_module.initialize(gui)
+	gui.registerWindow("BeamPaint", im.ImVec2(512, 256))
+	gui.showWindow("BeamPaint")
 end
 
 local function onUiChangedState(state)
@@ -181,11 +233,36 @@ local function onUiChangedState(state)
     M.inVehiclePaintMenu = state == "menu.vehicleconfig.color"
 end
 
+local function drawBP()
+    gui.setupWindow("BeamPaint")
+	im.PushStyleColor2(im.Col_Button, im.ImVec4(0.85, 0.15, 0.75, 0.333))
+	im.PushStyleColor2(im.Col_ButtonHovered, im.ImVec4(0.8, 0.1, 0.69, 0.5))
+	im.PushStyleColor2(im.Col_ButtonActive, im.ImVec4(0.75, 0.05, 0.55, 0.999))
+    im.Begin("BeamPaint", im.BoolPtr(true), im.WindowFlags_AlwaysAutoResize)
+        if im.Button("Reload Livery") then
+            reloadLivery()
+        end
+        if M.singlePlayer then
+            im.Separator()
+            im.Text("Liveries are loaded from <userfolder>/vehicles/common/<vehName>.png!")
+            im.Text("To preview a livery, place it there with the following name and hit \"Reload Livery\".")
+            local vehName = be:getPlayerVehicle(0):getField("JBeam", 0)
+            im.Text("For the current vehicle: \"/vehicles/common/" .. vehName .. ".png\"")
+            if im.Button("Open folder...") then
+                Engine.Platform.exploreFolder("/vehicles/common/")
+            end
+        else
+            -- TODO: Show current livery?
+        end
+        im.PopStyleColor(3)
+    im.End()
+end
+
 local function onUpdate(dt)
     if M.markedReady == false and worldReadyState >= 2 then
         M.markedReady = true
         if not M.singlePlayer then
-            TriggerServerEvent("BP_clientReady", "")
+            BP_reportPlayerCache()
         end
     end
     if #M.waitingForRole > 0 then
@@ -209,23 +286,7 @@ local function onUpdate(dt)
     end
     if M.inVehicleConfigMenu then
         -- Show the "Reload livery" UI
-        if im.Begin("BeamPaint", im.BoolPtr(true), im.WindowFlags_AlwaysAutoResize) then
-            if im.Button("Reload Livery") then
-                reloadLivery()
-            end
-            if M.singlePlayer then
-                im.Separator()
-                im.Text("Liveries are loaded from /vehicles/common/<vehName>.png!")
-                im.Text("If you want to preview a livery, simply put it in there with the right name and hit \"Reload Livery\".")
-                local vehName = be:getPlayerVehicle(0):getField("JBeam", 0)
-                im.Text("For the current vehicle: \"/vehicles/common/" .. vehName .. ".png\"")
-                if im.Button("Open folder...") then
-                    Engine.Platform.exploreFolder("/vehicles/common/")
-                end
-            else
-                -- TODO: Show current livery?
-            end
-        end
+        drawBP()
     end
 end
 
